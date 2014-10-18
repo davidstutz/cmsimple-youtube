@@ -1,0 +1,559 @@
+<html>
+	<head>
+		<title>Youtube Gallery Plugin for CMSimple</title>
+		<meta name="robots" content="noindex, nofollow" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="copyright" content="David Stutz" />
+		
+		<script type="text/javascript" src="js/shAutoloader.js"></script>
+		<script type="text/javascript" src="js/shCore.js"></script>
+		
+		<script type="text/javascript" src="js/shBrushPhp.js"></script>
+		<script type="text/javascript" src="js/shBrushCss.js"></script>
+		 
+		<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="css/shCoreDefault.css" rel="stylesheet" type="text/css" />
+		
+		<style type="text/css">
+			/* Colors: #005fa8 #f94405 */
+			#content,
+			#navigation {
+				font-family: "Liberation Sans", Helvetica, Arial, sans-serif;
+				font-size: 12pt;
+				color: #444444;
+				float: left;
+			}
+			#navigation {
+				width: 16%;
+				padding-right: 1%;
+				margin-right: 1%;
+				border-right: 1px solid #DDDDDD;
+				font-size: 90%;
+			}
+			#content {
+				width: 80%;
+			}
+			#content a,
+			#navigation a {
+				text-decoration: none;
+				color: #005fa8;
+			}
+			#content a:hover,
+			#navigation a:hover {
+				color: #f94405;
+			}
+			#content img {
+				border:1px solid #777;
+				padding:10px;
+				margin:10px;
+			}
+			#content h1 a, 
+			#content h2 a, 
+			#content h3 a, 
+			#content h4 a,
+			#content h5 a{
+				color: #444444;
+			}
+			#content h1 a:hover, 
+			#content h2 a:hover, 
+			#content h3 a:hover, 
+			#content h4 a:hover,
+			#content h5 a:hover{
+				color: #444444;
+			}
+			#content h1 {
+				font-size: 20pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h2 {
+				font-size: 18pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h3 {
+				font-size: 16pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h4 {
+				font-size: 14pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h5 {
+				font-size: 13pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content .toplink {
+				margin-right: 1em;
+				color: #005fa8;
+			}
+			#content ul {
+				list-style-type: square;
+			}
+			#navigation ol {
+				list-style-type: upper-roman;
+				margin-left: 0;
+				padding-left: 1.6em;
+			}
+			#navigation ol ol {
+				list-style-type: decimal;
+				margin-left: .2em;
+				padding-left: .6em;
+			}
+			#navigation ol ol ol {
+				list-style-type: lower-latin;
+				margin-left: .2em;
+				padding-left: .6em;
+			}
+			#navigation ol ol ol ol {
+				list-style-type: lower-roman;
+				margin-left: .1em;
+				padding-left: .6em;
+			}
+			#content .notice {
+				padding:.8em;
+				margin-bottom:1.6em;
+				border:2px solid #ddd;
+				background:#FFF6BF;
+				color:#514721;
+				border-color:#FFD324;
+			}
+			#content .code {
+				font-family:"Courier New", Courier, monospace;
+				background: #FAFAFA;
+				border: 1px dotted #777777;
+				padding: 10px;
+				margin: 1em;
+				text-align: left;
+				word-wrap: break-word;
+			}
+			#content .code {
+				list-style-type: none;
+			}
+			#content .toplink {
+				float: right;
+				font-weight: normal;
+				font-size: 12pt;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="navigation">
+			<ol>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#version">Version</a></li>
+				<li>
+					<a href="#requirements">Requirements</a>
+					<ol>
+						<li><a href="#requirements-php">PHP</a></li>
+						<li><a href="#requirements-cmsimple">Supported CMSimple versions</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#installation">Installation</a>
+					<ol>
+						<li><a href="#installation-xh">CMSimple XH</a></li>
+						<li><a href="#installation-other">CMSimple 3.3 and CMSimple LE</a></li>
+					</ol>
+				</li>
+                <li>
+                    <a href="#upgrading">Upgrading</a>
+                    <ol>
+                        <li><a href="#upgrading-1-0-1-1">1.0.x to 1.1.x</a></li>
+                        <li><a href="#upgrading-1-1-1-2">1.1.x to 1.2.x</a></li>
+                        <li><a href="#upgrading-1-2-1-3">1.2.x to 1.3.x</a></li>
+                    </ol>
+                </li>
+				<li>
+					<a href="#configuration">Configuration</a>
+					<ol>
+						<li><a href="#configuration-options">Configuration options</a></li>
+						<li><a href="#configuration-file">The configuration file</a></li>
+						<li><a href="#configuration-backend">Backend configuration</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#usage">Usage</a>
+					<ol>
+						<li><a href="#usage-getting-started">Calling the plugin</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#backend">Backend</a>
+					<ol>
+						<li>
+							<a href="#backend-galleries">Managing galleries</a>
+							<ol>
+								<li><a href="#backend-galleries-new">New galleries</a></li>
+								<li><a href="#backend-galleries-delete">Deleting a gallery</a></li>
+							</ol>
+						</li>
+						<li>
+							<a href="#backend-videos">Managing videos</a>
+							<ol>
+								<li><a href="#backend-videos-add">Creating a new video</a>
+									<ol>
+										<li><a href="#backend-videos-youtube-id">How to get the Youtube ID?</a></li>
+									</ol>
+								</li>
+								<li><a href="#backend-videos-edit">Editing a vide</a></li>
+								<li><a href="#backend-videos-delete">Deleting a video</a></li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li><a href="#custom-styling">Custom styling</a></li>
+				<li><a href="#icons">Icons</a></li>
+				<li><a href="#notes">Notes</a></li>
+				<li>
+					<a href="#changelog">Changelog</a>
+					<ol>
+						<li><a href="#changelog-1-3">Version 1.3</a></li>
+					</ol>
+				</li>
+				<li><a href="#license">License</a></li>
+			</ol>
+		</div>
+		
+		<div id="content">
+			<h1>Youtube Gallery Plugin for CMSimple</h1>
+			
+				<h2><a name="introduction">Introduction</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>This plugin is designed to simplify the creation, management and frontend presentation of youtube video galleries. The backend allows the creation of different galleries, adding videos just with their youtube id, title, description and the position in the gallery.</p>
+					
+					<img src="youtube.png" alt="Youtube frontend preview."/>
+				
+				<h2><a name="version">Version</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>This is currently version 1.3.0 of the plugin, released 13th March 2014.</p>
+				
+				<h2><a name="requirements">Requiremeqnts</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="requirements-php">PHP</a><a class="toplink" href="#">Back to top</a></h3>
+						
+						<p><b>Update</b>: A CSV helper is used. The helper only uses fgetcsv() and fputcsv(). SO a PHP version <b>5 or higher</b> is required.</p>
+					
+						<p style="text-decoration: line-through"><b>Update</b>: Found an alternative for using str_getcsv(), so for PHP versions supporting str_getcsv() this function is still used, for those not supporting str_getcsv() the alternative function is used. So theoretical the plugin can be used with <b>PHP 5 or higher</b></p>
+						
+						<p class="notice">Note: The alternative function is not tested sufficiently. Use with caution.</p>
+						
+						<p style="text-decoration: line-through;">Currently the plugin works using fputcsv(), fgetcsv() and str_getcsv(), so a PHP version <b>5.3.0 or higher</b> is required. I am working on another solution allowing it to use the plugin with PHP 5 or higher.</p>
+		
+					<h3><a name="requirements-cmsimple">Supported CMSimple versions</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<ul>
+							<li><b>CMSimple XH 1.5 or higher (recommended)</b></li>
+							<li>CMSimple XH 1.4.2</li>
+							<li>CMSimple XH 1.1.4</li>
+							<li>CMSimple LE 3.4(.1) (Pluginloader needed, see installation guide below)</li>
+							<li>CMSimple 3.3 (Pluginloader needed, see installation guide below)</li>
+						</ul>
+				
+				<h2><a name="installation">Installation</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="installation-xh">CMSimple XH</a><a class="toplink" href="#">Back to top</a></h3>
+						<ul>
+							<li>Download the plugin.</li>
+							<li>In the <code>plugins</code> folder, create a subfolder called <code>youtube</code>.</li>
+							<li>Extract the files into the <code>youtube</code> folder.</li>
+							<li>The plugin stores the galleries in CSV files in /content/plugins/youtube. The folder is created automatically (mostly).This folder needs write and read permissions. The plugin does check this permissions and tries to alter this permissions if needed.</li>
+							<li>Go into backend and see if the installation is detected correctly.</li>
+						</ul>
+					
+					<h3><a name="installation-other">CMSimple 3.3 and CMSimple LE</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p>The images are taken in CMSimple 3.3, but should help installing the plugin in CMSimple LE, too.</p>
+						<ul>
+							<li>Download a working Pluginloader, see <a href="http://cmsimplewiki.com/doku.php/pluginloader/pluginloader">CMSimple Wiki: Pluginloader</a> or the <a href="http://www.cmsimpleforum.com/">CMSimple Forum</a> to get the current version.</li>
+							<li>Create a folder named <code>plugins</code> in the CMSimple root directory.</li>
+							<li>Extract the pluginloader into this directory. You will have <code>plugins/index.php</code> and <code>plugins/pluginloader</code>.</li>
+							<li>Edit <code>cmsimple/config.php</code> and add: </li>
+						</ul>
+						
+						<pre class="brush: php">
+$cf['plugins']['folder'] = "plugins";
+						</pre>
+						
+						<ul>
+							<li>Go in your CMSimple backend, choose 'Settings' and edit configuration:</li>
+						</ul>
+						
+						<img src="youtube-cmsimple-3-3.png" alt="CMSimple 3.3 settings." />
+						
+						<ul>
+							<li>Look for the plugins_folder configuration key:</li>
+						</ul>
+							
+						<img src="youtube-cmsimple-3-3-config.png" alt="CMSimple plugins_folder configuration." />
+							
+						<ul>	
+							<li>In the <code>plugins</code> folder, create a subfolder called <code>youtube</code>.</li>
+							<li>Extract the files into the <code>youtube</code> folder.</li>
+						</ul>
+				
+                <h2><a name="upgrading">Upgrading</a><a class="toplink" href="#">Back to top</a></h2>
+                        
+                    <h3><a name="upgrading-1-0-1-1">1.0.x to 1.1.x</a><a class="toplink" href="#">Back to top</a></h3>
+                
+                        <p>
+                            The data (CSV with videos) should be compatible between this version. Do not overwrite plugins/youtube/list.csv and your videos will be kept available.
+                        </p>
+                    
+                    <h3><a name="upgrading-1-1-1-2">1.1.x to 1.2.x</a><a class="toplink" href="#">Back to top</a></h3>
+                
+                        <p>
+                            Between these versions there were made many changes. Instead of using one list of youtube videos 1.2.x supports the creation of different galleries of videos. The format of the CSV files (list.csv for 1.1.x and the gallery CSV files in 1.2.x) is the same, but the gallery CSV files of 1.2.x are store by default in content/plugins/youtube/galleryname.csv. So for updating it should work by copying list.csv into content/plugins/youtube/list.csv (or into the directory specified by the <b>filepath</b> option in the configuration). Another small difference is the internal used and in 1.2.x shown id (not the youtube id), 1.2.x uses a current timestamp, whereas 1.1.x uses an own routine for defining a new id, so after updating to 1.2.x the dates shown in backend of the old videos will not make much sense, but that should not be any problem!
+                        </p>
+                    
+                    <h3><a name="upgrading-1-2-1-3">1.2.x to 1.3.x</a><a class="toplink" href="#">Back to top</a></h3>
+                        
+                        <p>
+                            The csv scheme changed slightly: The width and height of each video are stored. So make sure you add a width and height to each video. If not the plugin will choose a default width and height which is configurable in the configuration: <b>default_video_width</b> and <b>default_video_height</b>.
+                        </p>
+                    
+				<h2><a name="configuration">Configuration</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>Configuration can either be done by directly editing config.php or by using the backend.</p>
+					
+					<h3><a name="configuration-options">Configuration options</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<ul>
+							<li><b>csv_filepath</b>: The path where to store the galleries CSV files, relative to CMSimple root.</li>
+							<li><b>csv_delimiter</b>: The delimiter used between cells in all CSV files.</li>
+							<li><b>csv_enclosure</b>: The enclosure used in all CSV files. Must be a single ASCII character. See <a href="http://en.wikipedia.org/wiki/ASCII">here</a> for a list with all ASCII characters.</li>
+						</ul>	
+							
+						<p class="notice">There is no need to edit <b>csv_filepath</b>, <b>csv_delimiter</b> or <b>csv_enclosure</b>. Important: Do not edit these settings in production environments, all old galleries and videos won't be read correctly.</p>
+							
+						<ul>
+							<li><b>date_format</b>: The date format for the backend. It is a date format like date() expects it, so see <a href="http://php.net/manual/de/function.date.php">the manual</a>.</li>
+                            <li><b>video_default_width</b>: The default width of a video. This is used if no width is found (for example when using videos from previous versions). Unsigned integer.</li>
+                        </ul>
+					
+					<h3><a name="configuration-file">The configuration file</a><a class="toplink" href="#">Back to top</a></h3>
+					
+					<pre class="brush: php">
+/** 
+* Filepath storing CSV containing videos.
+* @warning NOTE: Without '/' at the end! 
+* @var
+*/
+$plugin_cf['youtube']['csv_filepath'] = "content/plugins/youtube";
+/** 
+* Delimiter for CSV. 
+* @var
+*/
+$plugin_cf['youtube']['csv_delimiter'] = "#";
+/**
+* Enclosure for CSV.
+* @var
+*/
+$plugin_cf['youtube']['csv_enclosure'] = "\"";
+/**
+* Date format used in backend.
+* @var
+*/
+$plugin_cf['youtube']['date_format'] = "d.m.Y";
+/**
+* Default width of a video.
+* @var
+*/
+$plugin_cf['youtube']['video_default_width'] = "420";
+/**
+* Default height of a video.
+* @var
+*/
+$plugin_cf['youtube']['video_default_height'] = "315";
+					</pre>
+					
+					<h3><a name="configuration-backend">Backend configuration</a><a class="toplink" href="#">Back to top</a></h3>
+				
+					<p>See the help texts of the options to see if your changes are valid.</p>
+				
+					<img src="youtube-config.png" alt="Backend configuration." />
+				
+				<h2><a name="usage">Usage</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="usage-getting-started">Getting StartedCalling the plugin</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						For calling the plugin on some of your pages use one of the following scripts:
+						
+						<ul>
+							<li>CMSimple scripting: <b>#CMSimple $o .= youtube('galleryname'); #</b></li>
+							<li>New CMSimple_XH scripting: <b>{{{PLUGIN:youtube('galleryname');}}}</b></li>
+						</ul>
+						
+						<p>The function expects one parameter: A string defining the gallery to show. The string must be the same as the gallery name in backend.</p>
+				
+				<h2><a name="backend">Backend</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>Select the plugin in your CMSimple backend. You will see some information about the plugin:</p>
+					<img src="youtube-info.png" alt="Youtube information of installed version." />
+					
+					<p>Click "Manage galleries" in the toolbar.</p>
+					
+					<p>The first thing to do is to create a gallery.</p>
+					<img src="youtube-first-gallery.png" alt="Create the first gallery." />
+					
+					<h3><a name="backend-galleries">Managing galleries</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p class="notice"><b>NOTE</b>: It is recommended to use a name without any whitespace or special (for example non-ascii) characters. The gallery name is used as file name for the CSV file storing the videos, so use only valid names for files.</p>
+						
+						<p>There are several options managing the galleries:</p>
+						<ul>
+							<li>Create a new gallery.</li>
+							<li>Remove a gallery.</li>
+						</ul>
+						
+						<h4><a name="backend-galleries-new">New galleries</a><a class="toplink" href="#">Back to top</a></h4>
+						
+							<p>For creating a new gallery click the "New gallery" link. The form is the same as for creating the first gallery.</p>
+						
+						<h4><a name="backend-galleries-delete">Deleting a gallery</a><a class="toplink" href="#">Back to top</a></h4>
+						
+							<p>For deleting a gallery click the "Remove gallery" link when the wished gallery is selected. You will be asked if you are sure you want to delete the gallery. If there are still videos in the gallery they will be deleted, too.</p>
+							<img src="youtube-delete-gallery.png" alt="Delete gallery." />
+						
+					<h3><a name="backend-videos">Managing videos</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p>There are several options to manage the videos in a gallery:</p>
+						<ul>
+							<li>Create a new video.</li>
+							<li>Edit a video.</li>
+							<li>Delete a video.</li>
+						</ul>
+						
+						<p>Fields:</p>
+						
+						<ul>
+							<li><b>Youtube ID</b>: The Youtube ID, see <a href="#backend-videos-youtube-id">"How to get the Youtube ID?""</a>.</li>
+							<li><b>Position</b>: The positioning number, defining the position of the video within the gallery.</b>
+							<li><b>Title</b>: The title of the entry.</li>
+							<li><b>Description</b>: The body of the entry.</li>
+						</ul>
+						
+						<p><b>How about using special characters and quotiation marks within the fields?</b></p>
+						
+						<p>Currently special characters and especially quotation marks can be used for the title, the description and the link title. This is accomplished using a combination of using htmlspecialchars($content, ENT_QUOTES) for saving the data to the CSV file and using html_entity_decode() for displaying the descritpion. So the conclusion: the title can <b>not</b> be filled with HTML code. For the description the use of HTML code is ok.</p>
+						
+						<p class="notice">Note: There can still be combinations of characters this solution does not work for!</p>
+						
+						
+						<h4><a name="backend-videos-add">Adding a new video</a><a class="toplink" href="#">Back to top</a></h4>
+						
+							<p>For adding a new video click the "Add"-Button (the green plus-symbol). A title and a Youtube ID is required, the description and position of the video is optional, if no position is given the order of the video is dependant on the CSV file the videos are saved in. If no description is given the description-div will not be printed.</p>
+							<img src="youtube-add-video.png" alt="Add video." />
+							
+							<h5><a name="backend-videos-youtube-id">How to get the Youtube ID?</a><a class="toplink" href="#">Back to top</a></h5>
+								<p>Go to Youtube and select a video:</p>
+								<img src="youtube-id.png" alt="Get Youtube ID."/>
+							
+							<p>Successfully added the video:</p>
+							<img src="youtube-saved-video.png" alt="Successfully saved video." />
+							
+						<h4><a name="backend-videos-edit">Editing a video</a><a class="toplink" href="#">Back to top</a></h4>
+						
+							<p>Editing a video is similar to adding a new one. For editing a video click the "Edit"-Button in the row of the video. You will see the form filled with the current data.</p>
+							
+							<h4><a name="backend-videos-delete">Deleting a video</a><a class="toplink" href="#">Back to top</a></h4>
+							
+							<p>For deleting a video click the "Delete"-Button in the row of the video. You will be asked if you are sure you want to delete the video:</p>
+							<img src="youtube-delete-video.png" alt="Delete video." />
+							
+							<p>After clicking "I'm sure.":</p>
+							<img src="youtube-deleted-video.png" alt="Successfully deleted video." />
+				
+				<h2><a name="custom-styling">Custom styling</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>Custom styling can either be done in the templates stylesheet or by modifying the plugin's stylesheet. The plugin's stylesheet is located in plugins/youtube/css. Delete the frontend part in the stylesheet of the plugin if you want to do custom styling in the template's stylesheet.</p>
+					
+					<p>The frontend part of the stylesheet looks like this:</p>
+					
+					<pre class="brush: css">
+/*
+ * Frontend style.
+ */
+
+/* The title div. */
+.youtube-title {
+	margin: 1em auto;
+	border-bottom: 1px solid #777;
+	font-size: 18pt;
+	font-weight: bold;
+	padding: 10px 0;
+}
+
+/* The video div. */
+.youtube-video {
+	margin: 1em auto;
+}
+
+/* The description div. */
+.youtube-description {
+	border: 1px solid #777;
+	padding: 10px;
+	margin: 1em 0;
+}
+					</pre>
+					
+					<p>Classes:</p>
+					
+					<ul>
+						<li><b>youtube-title</b>: It is the class of the title div of each video.</li>
+						<li><b>youtube-video</b>: The video div class.</li>
+						<li><b>youtube-description</b>: The description div class.</li>
+					</ul>
+				
+				<h2><a name="icons">Icons</a><a class="toplink" href="#">Back to top</a></h2>
+					
+					<p>All icons used in the backend of this plugin are part of the spirit20 icons set (licensed under GPL). See <a href="http://19eighty7.com/icons">here</a> For the complete set. Thanks to Dale Morrell for this great set of icons!</p>
+				
+				<h2><a name="notes">Notes</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>The plugin was tested, but there may still be bugs.<br />
+					If you are using the plugin: Support the development by making bug reports and giving ideas how to improve the plugin.<br />
+					As platform you can use the SourceForge project's page: <a href="http://sourceforge.net/projects/cmsimpleyoutube/">SourceForge project</a></p>
+					
+					<p>David Stutz<br />
+					davidstutz@web.de</p>
+				
+				<h2><a name="changelog">Changelog</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="changelog-1-3">Version 1.3</a><a class="toplink" href="#">Back to top</a></h3>
+                        
+                        <p><b>Beta 5.</b></p>
+                    
+                        <ul>
+                            <li>Update to support CMSimple XH 1.6.x.</li>
+                        </ul>
+                    
+                        <p><b>Up to Beta 4.</b></p>
+                    
+                        <ul>
+                            <li>Bug fixes, see <a href="https://sourceforge.net/p/cmsimpleyoutube/discussion/1774240/thread/1969f728/">https://sourceforge.net/p/cmsimpleyoutube/discussion/1774240/thread/1969f728/</a>.</li>
+                            <li>Video description should support links and special characters.</li>
+                        </ul>
+                        
+						<p><b>Beta 1.</b></p>
+						
+						<ul>
+							<li>Get rid of str_getcsv().</li>
+							<li>Migrated from functional programming to object-oriented programming.</li>
+							<li>Minor changes concerning HTML entities and special chars.</li>
+							<li>Integrated help on some pages.</li>
+                            <li>Added <code>version.nfo</code> file.</li>
+                            <li>Added configurable width and height fields for all videos.</li>
+						</ul>
+				
+				<h2><a name="license">License</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					The plugin is published under the GNU Public License Version 3. For more information see: <a href="http://www.gnu.org/licenses/">GNU Licenses</a>
+					
+					<p>The plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+					
+					<p>The plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p>
+		</div>
+		<script type="text/javascript">
+		     SyntaxHighlighter.all()
+		</script>
+	</body>
+</html>
