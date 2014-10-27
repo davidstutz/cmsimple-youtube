@@ -95,7 +95,7 @@ class Youtube {
 	 * public
 	 * Current version.
 	 */
-	const VERSION = '1.3.0';
+	const VERSION = '1.3.1';
 	
 	/**
 	 * @static
@@ -154,7 +154,7 @@ class Youtube {
 	 */
 	public static function release_date() 
 	{
-	   return "18th October 2014";
+	   return "27th October 2014";
 	}
 	
 	/**
@@ -181,6 +181,18 @@ class Youtube {
 		return '<a href="http://davidstutz.de/cmsimple/?Youtube" target="_blank">Project Webpage</a>';
 	}
 	
+        /**
+	 * @public
+	 * @static
+	 * Get plugin's GitHub repo.
+	 * 
+	 * @retrun <string> GitHub link
+	 */
+	public static function github()
+	{
+		return '<a href="https://github.com/davidstutz/cmsimple-youtube" target="_blank">GitHub Repository</a>';
+	}
+        
 	/**
 	 * @public
 	 * @static
