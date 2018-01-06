@@ -10,7 +10,7 @@
  * @package youtube
  * @see http://sourceforge.net/projects/cmsimpleyoutube/
  * 
- *  Copyright 2011 - 2014 David Stutz
+ *  Copyright 2011 - 2018 David Stutz
  * 
  * 	This file is part of the youtube gallery plugin for CMSimple.
  *

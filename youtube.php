@@ -10,7 +10,7 @@
  * @package youtube
  * @see http://sourceforge.net/projects/cmsimpleyoutube/
  * 
- *  Copyright 2011 - 2014 David Stutz
+ *  Copyright 2011 - 2018 David Stutz
  * 
  * 	This file is part of the youtube gallery plugin for CMSimple.
  *
@@ -95,7 +95,7 @@ class Youtube {
 	 * public
 	 * Current version.
 	 */
-	const VERSION = '1.3.1';
+	const VERSION = '1.3.2';
 	
 	/**
 	 * @static
@@ -154,7 +154,7 @@ class Youtube {
 	 */
 	public static function release_date() 
 	{
-	   return "27th October 2014";
+	   return "January 6th 2018";
 	}
 	
 	/**

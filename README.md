@@ -4,7 +4,9 @@ CMSimple Youtube is a CMSimple plugin for creating youtube video galleries.
 
 Project page: [http://davidstutz.de/cmsimple/?Youtube](http://davidstutz.de/cmsimple/?Youtube).
 
-Documentation: [http://davidstutz.github.io/cmsimple-youtube/help/help_en.htm](http://davidstutz.github.io/cmsimple-youtube/help/help_en.htm).
+Documentation: [http://davidstutz.de/cmsimplexhdemo/plugins/youtube/help/help_en.htm](http://davidstutz.de/cmsimplexhdemo/plugins/youtube/help/help_en.htm).
+
+Demo: [http://davidstutz.de/cmsimplexhdemo/](http://davidstutz.de/cmsimplexhdemo/)
 
 **Outdated** Sourceforge project: [https://sourceforge.net/projects/cmsimpleyoutube](https://sourceforge.net/projects/cmsimpleyoutube).
 
@@ -25,38 +27,13 @@ Supports [Hi_updatecheck](http://cmsimple.holgerirmler.de/en/?Plugins:UpdateChec
 
 Also tested on:
 
-* CMSimple XH 1.4.2 and 1.1.4.
+* CMSimple XH 1.4.2 (or higher) and 1.1.4.
 * CMSimple Realblog 1.5 or higher.
-
-## Changelog
-
-### 1.3.1
-
-* Minor fixes, additional tests for CMSimple XH 1.6.4.
-
-### 1.3.0
-
-**Beta 5.**
-
-* Update to support CMSimple XH 1.6.x.
-
-**Up to Beta 4.**
-
-* Bug fixes, see https://sourceforge.net/p/cmsimpleyoutube/discussion/1774240/thread/1969f728/.
-* Video description should support links and special characters.
-
-**Beta 1.**
-
-* Get rid of str_getcsv().
-* Migrated from functional programming to object-oriented programming.
-* Minor changes concerning HTML entities and special chars.
-* Integrated help on some pages.
-* Added version.nfo file.
-* Added configurable width and height fields for all videos.
+* CMSimple 4.7.3.
 
 ## License
 
-Copyright 2011 - 2014 David Stutz
+Copyright 2011 - 2018 David Stutz
 
 The plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

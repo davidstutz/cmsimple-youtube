@@ -10,7 +10,7 @@
  * @package youtube
  * @see http://sourceforge.net/projects/cmsimpleyoutube/
  * 
- *  Copyright 2011 - 2014 David Stutz
+ *  Copyright 2011 - 2018 David Stutz
  * 
  * 	This file is part of the youtube gallery plugin for CMSimple.
  *
@@ -29,7 +29,12 @@
 
 if (!class_exists('Youtube')) require dirname(__FILE__) . "/youtube.php";
 
-if (isset($youtube))
+if (function_exists('XH_registerStandardPluginMenuItems'))
+{
+    XH_registerStandardPluginMenuItems(true);
+}
+
+if ((function_exists('XH_wantsPluginAdministration') AND XH_wantsPluginAdministration('youtube')) OR isset($youtube))
 {
 	/* Make CMSimple global saccessable. */
 	global $sn,$pth,$plugin,$plugin_tx;
