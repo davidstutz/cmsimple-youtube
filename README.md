@@ -8,6 +8,8 @@ Documentation: [http://davidstutz.de/cmsimplexhdemo/plugins/youtube/help/help_en
 
 Demo: [http://davidstutz.de/cmsimplexhdemo/](http://davidstutz.de/cmsimplexhdemo/)
 
+Also consider [donating](http://davidstutz.de/donate/) to support this plugin.
+
 **Outdated** Sourceforge project: [https://sourceforge.net/projects/cmsimpleyoutube](https://sourceforge.net/projects/cmsimpleyoutube).
 
 Other CMSimple plugins:

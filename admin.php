@@ -54,15 +54,16 @@ if ((function_exists('XH_wantsPluginAdministration') AND XH_wantsPluginAdministr
 	{
 		$o .= '<p class="youtube-head"><b>' . Youtube::name() . '</b></p>'
 				. '<p class="youtube-notice">'
-                                    . 'Version: ' . Youtube::VERSION . '<br />'
-                                . '</p>'
-                                . '<p class="youtube-help">'
-                                    . 'Released: ' . Youtube::release_date() . '<br />'
-                                    . 'Author: ' . Youtube::author() . '<br />'
-                                    . 'Website: ' . Youtube::website() . '<br />'
-                                    . 'GitHub Repository/Releases: ' . Youtube::github() . '<br />'
-                                    . Youtube::description() . '<br />'
-                                    . Youtube::legal() . '<br />'
+					. 'Version: ' . Youtube::VERSION . '<br />'
+				. '</p>'
+				. '<p class="youtube-help">'
+					. 'Released: ' . Youtube::release_date() . '<br />'
+					. 'Author: ' . Youtube::author() . '<br />'
+					. 'Website: ' . Youtube::website() . '<br />'
+					. 'GitHub Repository/Releases: ' . Youtube::github() . '<br />'
+					. Youtube::donate() . '<br />'
+					. Youtube::description() . '<br />'
+					. Youtube::legal() . '<br />'
 				. '</p>';
 	}
 	
