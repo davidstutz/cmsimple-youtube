@@ -6,9 +6,7 @@ CMSimple Youtube is a CMSimple plugin for creating youtube video galleries.
 
 Documentation included in the plugin.
 
-Project page: [http://davidstutz.de/cmsimple/?Youtube](http://davidstutz.de/cmsimple/?Youtube).
-
-Demo: [http://davidstutz.de/cmsimplexhdemo/](http://davidstutz.de/cmsimplexhdemo/)
+Project webpage: [http://davidstutz.de/projects/cmsimple-plugins/](http://davidstutz.de/projects/cmsimple-plugins/)
 
 Also consider [donating](http://davidstutz.de/donate/) to support this plugin.
 
